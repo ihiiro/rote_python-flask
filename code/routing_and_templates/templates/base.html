@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      * { font-family: sans-serif; }
+    </style>
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <nav>
+      <!-- the url_for function uses the URL-to-function mapping in app.py -->
+      <span><a href="{{ url_for('main_page_html') }}">home</a></span>
+      <!-- second argument to url_for is variable part of url -->
+      <span><a href="{{ url_for('profile', username="*hyeay*") }}">Hyeay</a></span>
+    </nav>
+    <h2>base.html</h2>
+    <!-- space for actual content -->
+    {% block content %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!-- tell jinja that this template inherits from base.html -->
+{% extends 'base.html' %}
+<!-- fill in the title block -->
+{% block title %}home{% endblock %}
+<!-- fill in the content block -->
+{% block content %}
+
+  {# this is a jinja comment #} <!-- jinja comment -->
+
+  <h1>Welcome to the home page!</h1>
+  <p>USERNAME: <mark>{{ username }} <!-- for output --> </mark></p>
+  <ol>
+    {% for number in numbers[0] %} <!-- for statements(no output) -->
+    <li><mark>{{ numbers[0][number] }}</mark></li>
+    {% endfor %} <!-- end jinja statement -->
+  </ol>
+
+{% endblock %}

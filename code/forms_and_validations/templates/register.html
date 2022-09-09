@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Register Page</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      form {
+        font-family: sans-serif;
+        margin: 100px auto 0 auto;
+        width: 30%;
+      }
+      form > * {
+        width: 100%;
+        padding: 8px;
+      }
+      label {
+        display: block;
+        padding: 12px 0;
+      }
+      #submit {
+        margin: 8px auto 0 auto;
+        cursor: pointer;
+      }
+      p {
+        color: red;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- error messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <!-- flask form -->
+    <form method="post">
+      <!-- against csrf(cross-site request forgery) attacks -->
+      {{ form.hidden_tag() }}
+
+      {{ form.username.label() }}
+      {{ form.username(placeholder='Username') }}
+      {{ form.email.label() }}
+      {{ form.email(placeholder='Email') }}
+      {{ form.password1.label() }}
+      {{ form.password1(placeholder='Password') }}
+      {{ form.password2.label() }}
+      {{ form.password2(placeholder='Confirm Password') }}
+
+      {{ form.submit() }}
+
+
+    </form>
+  </body>
+</html>

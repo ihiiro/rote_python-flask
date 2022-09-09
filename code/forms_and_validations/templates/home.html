@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home Page</title>
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+      .error {
+        color: red;
+        font-family: sans-serif;
+      }
+      .success {
+        color: green;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p class='{{ category }}'>{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <!-- content -->
+    {% if current_user.is_authenticated %}
+      <span>Welcome, {{ current_user.username }}</span>
+      <a href="{{ url_for('logout_page') }}">Logout</a>
+    {% else %}
+      <a href="{{ url_for('login_page') }}">Login</a>
+      <a href="{{ url_for('register_page') }}">Register</a>
+    {% endif %}
+
+    <h1>This is the Home Page</h1>
+  </body>
+</html>
